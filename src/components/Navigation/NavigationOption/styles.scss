@@ -1,0 +1,11 @@
+@import '../../../variables.scss';
+
+.active-link {
+   color: $primary-text;
+   font-weight: 700;
+}
+
+.non-active-link {
+   color: $secondary-text;
+   font-weight: 500;
+}
