@@ -43,7 +43,7 @@ const CatSelect = ({ config }) => {
                         + Show more {config.data.length - config.displayed}
                      </p>
                   )}
-                  <div>{values.categories}</div>
+                  <div>{values[config.dataName]}</div>
                   <div className='divider'></div>
                </Form>
             )}

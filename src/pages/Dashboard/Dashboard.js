@@ -7,8 +7,8 @@ import LoopsPage from '../../pages/LoopsPage/LoopsPage';
 import CatSelect from '../../components/Filters/CatSelect/CatSelect';
 
 const config = {
-   label: 'Categories',
-   dataName: 'categories',
+   label: 'Genre',
+   dataName: 'genre',
    displayed: 4,
    data: [
       {
@@ -41,7 +41,21 @@ const config = {
       },
    ],
 };
-
+const config1 = {
+   label: 'Categories',
+   dataName: 'categories',
+   displayed: 1,
+   data: [
+      {
+         displaName: 'All',
+         name: 'all-categories',
+      },
+      {
+         displaName: 'Sitar',
+         name: 'sitar',
+      },
+   ],
+};
 const Dashboard = () => {
    return (
       <div className='dashboard-container page-container'>
@@ -49,6 +63,7 @@ const Dashboard = () => {
             <div className='dashboard-left'>
                <div className='filters'>
                   <CatSelect config={config} />
+                  <CatSelect config={config1} />
                </div>
             </div>
             <div className='dashboard-right'>
