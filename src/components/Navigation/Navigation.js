@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
+import './styles.scss';
 import NavigationOption from './NavigationOption/NavigationOption';
 
 const Navigation = () => {
@@ -18,7 +18,7 @@ const Navigation = () => {
       },
    ];
    return (
-      <div>
+      <div className='navigation'>
          <ul>
             {navigationOptions.map(({ path, displayPathName }) => (
                <NavigationOption

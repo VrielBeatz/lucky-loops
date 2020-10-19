@@ -1,0 +1,11 @@
+.dashboard-container {
+   .dashboard-wrapper {
+      display: flex;
+      .dashboard-left {
+         flex-basis: 30%;
+      }
+      .dashboard-right {
+         flex: 1;
+      }
+   }
+}

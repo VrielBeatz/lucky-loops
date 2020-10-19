@@ -1,11 +1,14 @@
 @import '../../../variables.scss';
 
 .active-link {
-   color: $primary-text;
-   font-weight: 700;
+   // color: $primary-text;
+   color: $primary-color;
+   //  font-weight: 600;
+   &:hover {
+      color: $primary-color;
+   }
 }
 
 .non-active-link {
    color: $secondary-text;
-   font-weight: 500;
 }

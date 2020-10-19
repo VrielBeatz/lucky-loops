@@ -1,20 +1,29 @@
 import React from 'react';
+import './styles.scss';
 
 import Navigation from '../../components/Navigation/Navigation';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import LoopsPage from '../../pages/LoopsPage/LoopsPage';
+import CatSelect from '../../components/Filters/CatSelect/CatSelect';
 
-const Homepage = () => {
+const Dashboard = () => {
    return (
-      <div className='page-container'>
-         <Navigation />
-         <h1>Dashboard</h1>
-
-         <Switch>
-            <Route path='/loops' component={LoopsPage} />
-         </Switch>
+      <div className='dashboard-container page-container'>
+         <div className='dashboard-wrapper'>
+            <div className='dashboard-left'>
+               <div className='filters'>
+                  <CatSelect />
+               </div>
+            </div>
+            <div className='dashboard-right'>
+               <Navigation />
+               <Switch>
+                  <Route path='/loops' component={LoopsPage} />
+               </Switch>
+            </div>
+         </div>
       </div>
    );
 };
 
-export default Homepage;
+export default Dashboard;

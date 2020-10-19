@@ -1,0 +1,20 @@
+@import '../../variables.scss';
+
+.navigation {
+   background-color: $container;
+   // box-shadow: $box-shadow;
+   border-radius: $border-radius;
+   padding: 7px 10px;
+   width: fit-content;
+   ul {
+      display: flex;
+      li {
+         margin: 0 10px;
+         // font-weight: 600;
+         transition: 250ms;
+      }
+   }
+}
+li:hover {
+   color: $white;
+}

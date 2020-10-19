@@ -1,9 +1,9 @@
 @import '../../variables.scss';
 
 .header {
-   background-color: $container;
-   border-bottom: 1px solid gray;
-   box-shadow: $box-shadow;
+   // background-color: $container;
+   // border-bottom: 1px solid gray;
+   // box-shadow: $box-shadow;
    padding: 0 40px;
    height: 82px;
    .header-wrapper {
@@ -15,7 +15,10 @@
          flex: 1;
          .header-logo {
             display: flex;
+
             a {
+               font-weight: 700;
+               font-size: 32px;
                display: flex;
                align-items: center;
             }
