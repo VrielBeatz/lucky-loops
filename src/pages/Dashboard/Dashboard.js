@@ -17,7 +17,7 @@ const Dashboard = () => {
             <div className='dashboard-right'>
                <Navigation />
                <Switch>
-                  <Route path='/loops' component={LoopsPage} />
+                  <Route path='/dashboard/loops' component={LoopsPage} />
                </Switch>
             </div>
          </div>

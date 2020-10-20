@@ -1,0 +1,122 @@
+@import '../../../variables.scss';
+
+.loopItem {
+   .loop-head {
+      height: 56px;
+      display: flex;
+      cursor: pointer;
+      border-radius: $border-radius;
+      &:hover {
+         background-color: rgba($color: $container, $alpha: 1);
+      }
+      .loop-number {
+         font-size: 1.6rem;
+         display: flex;
+         align-items: center;
+         span {
+            width: 50px;
+            text-align: center;
+         }
+      }
+
+      .loop-author {
+         height: 100%;
+         display: flex;
+         flex: 1;
+
+         .author-avatar {
+            border-radius: $border-radius;
+            overflow: hidden;
+            width: 56px;
+            height: 56px;
+            background-color: $black;
+
+            img {
+               width: 100%;
+               height: 100%;
+               object-fit: cover;
+               object-position: center;
+            }
+         }
+         .loop-info {
+            padding-left: 12px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+
+            .loop-name {
+               a {
+                  font-size: 1.8rem;
+                  font-weight: 600;
+                  color: $primary-text;
+                  &:hover {
+                     text-decoration: underline;
+                  }
+               }
+            }
+            .author-name {
+               //  margin-top: 3px;
+               color: $secondary-text;
+               font-size: 1.3rem;
+               font-weight: 400;
+               a {
+                  color: $secondary-text;
+                  font-size: 1.3rem;
+                  font-weight: 400;
+                  &:hover {
+                     text-decoration: underline;
+                  }
+               }
+               .file-size {
+                  margin-left: 15px;
+               }
+            }
+         }
+      }
+   }
+
+   .loop-body {
+      .waves {
+         margin: 10px 0;
+         height: 100px;
+         background-color: $gray;
+      }
+      .flex {
+         display: flex;
+         .description {
+            p {
+               font-size: 1.5rem;
+               max-width: 70%;
+            }
+         }
+         .loop-buttons {
+            padding-right: 20px;
+            .loop-download {
+               width: 40px;
+               height: 40px;
+               border-radius: $border-radius;
+               position: relative;
+               background-color: $container;
+               cursor: pointer;
+
+               &::after {
+                  content: '';
+                  position: absolute;
+                  top: 50%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  width: 25px;
+                  height: 25px;
+                  background: url('../../../assets/icons/download.svg');
+                  background-size: contain;
+                  background-position: center;
+                  background-repeat: no-repeat;
+                  filter: invert(1);
+               }
+            }
+         }
+      }
+   }
+}

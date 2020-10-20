@@ -5,15 +5,15 @@ import NavigationOption from './NavigationOption/NavigationOption';
 const Navigation = () => {
    const navigationOptions = [
       {
-         path: '/loops',
+         path: '/dashboard/loops',
          displayPathName: 'Loops / Samples',
       },
       {
-         path: '/acapellas',
+         path: '/dashboard/acapellas',
          displayPathName: 'Acapellas',
       },
       {
-         path: '/beats',
+         path: '/dashboard/beats',
          displayPathName: 'Beats',
       },
    ];

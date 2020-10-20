@@ -139,19 +139,16 @@ const config1 = {
 const Filters = () => {
    return (
       <div className='filters'>
-         <div style={{ marginRight: '15px' }}>
-            <InputFilter />
+         <InputFilter />
 
-            <ButtonSelect config={keyConfig} />
+         <ButtonSelect config={keyConfig} />
 
-            <ButtonSelect config={orderByConfig} />
+         <ButtonSelect config={orderByConfig} />
 
-            <div>
-               <Slider />
-            </div>
-            <CatSelect config={config} />
-            <CatSelect config={config1} />
-         </div>
+         <Slider />
+
+         <CatSelect config={config} />
+         <CatSelect config={config1} />
       </div>
    );
 };
