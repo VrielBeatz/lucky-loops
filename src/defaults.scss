@@ -23,3 +23,15 @@ a {
 .page-container {
    padding: 20px 40px 0;
 }
+h1,
+h2,
+h3,
+h4,
+h5 {
+   line-height: 1;
+}
+@media (max-width: 600px) {
+   .page-container {
+      padding: 20px 12px 0;
+   }
+}

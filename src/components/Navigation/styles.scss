@@ -2,16 +2,28 @@
 
 .navigation {
    background-color: $container;
-   // box-shadow: $box-shadow;
+   box-shadow: $box-shadow;
    border-radius: $border-radius;
-   padding: 7px 10px;
+   padding: 0 10px;
    width: fit-content;
+   height: 40px;
+   display: flex;
+   align-items: center;
+   user-select: none;
+
    ul {
+      height: 100%;
       display: flex;
       li {
+         height: 100%;
          margin: 0 10px;
          // font-weight: 600;
          transition: 250ms;
+         a {
+            height: 100%;
+            display: flex;
+            align-items: center;
+         }
       }
    }
 }

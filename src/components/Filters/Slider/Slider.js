@@ -1,8 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.scss';
 import { Formik, Form, Field } from 'formik';
 
-const ButtonSelect = ({ config }) => {
+const config = {
+   selectLabel: 'Key',
+   selectName: 'keys',
+
+   data: [
+      {
+         value: 'any',
+         label: 'Key',
+      },
+      {
+         value: 'c',
+         label: 'C',
+      },
+   ],
+};
+
+const Slider = () => {
    const [isActive, setIsActive] = useState(false);
    const initialValues = {
       [config.selectName]: config.data[0].label,
@@ -13,11 +29,11 @@ const ButtonSelect = ({ config }) => {
       setIsActive((prev) => !prev);
    };
    return (
-      <div className='buttonSelect-container'>
-         <h2>{config.selectLabel}</h2>
+      <div className='slider-container'>
+         {/* <h2>{config.selectLabel}</h2> */}
          <Formik initialValues={initialValues}>
             {({ values }) => (
-               <Form onChange={handleOpen}>
+               <Form>
                   <div className='select-box'>
                      {active && (
                         <div
@@ -27,7 +43,18 @@ const ButtonSelect = ({ config }) => {
                                  : 'options-container'
                            }
                         >
-                           {config.data.map((option) => (
+                           <div className='inp'>
+                              {/* <label htmlFor='email'>From</label> */}
+
+                              <Field autoComplete='off' name='from' />
+                           </div>
+                           <span className='divid'>to</span>
+                           <div className='inp'>
+                              {/* <label htmlFor='email'>To</label> */}
+
+                              <Field autoComplete='off' name='to' />
+                           </div>
+                           {/* {config.data.map((option) => (
                               <div className='option'>
                                  <Field
                                     className='radio'
@@ -40,12 +67,12 @@ const ButtonSelect = ({ config }) => {
                                     {option.label}
                                  </label>
                               </div>
-                           ))}
+                           ))} */}
                         </div>
                      )}
 
                      <div onClick={handleOpen} className='selected'>
-                        {values[config.selectName]}
+                        BPM
                      </div>
                   </div>
                </Form>
@@ -55,4 +82,4 @@ const ButtonSelect = ({ config }) => {
    );
 };
 
-export default ButtonSelect;
+export default Slider;

@@ -1,11 +1,37 @@
+@import '../../variables.scss';
+
 .dashboard-container {
    .dashboard-wrapper {
       display: flex;
       .dashboard-left {
-         flex-basis: 30%;
+         flex-basis: 22%;
+         overflow-y: scroll;
+         margin-right: 15px;
+         height: calc(100vh - 102px);
+         &::-webkit-scrollbar {
+            width: 6px;
+            background: rgba($color: $container, $alpha: 0);
+         }
+         &::-webkit-scrollbar-thumb {
+            border-radius: $border-radius;
+            background: $container;
+         }
       }
       .dashboard-right {
          flex: 1;
+      }
+   }
+}
+
+@media (max-width: 600px) {
+   .dashboard-container {
+      .dashboard-wrapper {
+         flex-direction: column;
+         .dashboard-left {
+            display: none;
+         }
+         .dashboard-right {
+         }
       }
    }
 }

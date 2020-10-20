@@ -1,11 +1,18 @@
 import React from 'react';
+import './styles.scss';
 
-const Loops = () => {
+const LoopsPage = () => {
    return (
-      <div>
-         <h1>Loops Page</h1>
+      <div className='loopsPage-wrapper'>
+         <h2>Loops / Samples</h2>
+         <div className='loops-container'>
+            <div>1 track</div>
+            <div>2 track</div>
+            <div>3 track</div>
+            <div>4 track</div>
+         </div>
       </div>
    );
 };
 
-export default Loops;
+export default LoopsPage;
