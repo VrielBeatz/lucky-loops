@@ -4,17 +4,6 @@
    .dashboard-wrapper {
       display: flex;
       .dashboard-left {
-         overflow-y: scroll;
-         margin-right: 15px;
-         height: calc(100vh - 102px);
-         &::-webkit-scrollbar {
-            width: 6px;
-            background: rgba($color: $container, $alpha: 0);
-         }
-         &::-webkit-scrollbar-thumb {
-            border-radius: $border-radius;
-            background: $container;
-         }
       }
       .dashboard-right {
          flex: 1;

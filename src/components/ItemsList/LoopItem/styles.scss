@@ -1,6 +1,7 @@
 @import '../../../variables.scss';
 
 .loopItem {
+   margin-bottom: 50px;
    .loop-head {
       height: 56px;
       display: flex;
@@ -12,6 +13,8 @@
       .loop-number {
          font-size: 1.6rem;
          display: flex;
+         display: none;
+
          align-items: center;
          span {
             width: 50px;
@@ -80,8 +83,8 @@
    .loop-body {
       .waves {
          margin: 10px 0;
-         height: 100px;
-         background-color: $gray;
+         //  height: 100px;
+         //  background-color: $gray;
       }
       .flex {
          display: flex;

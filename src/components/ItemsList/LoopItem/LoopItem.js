@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.scss';
 import authorAvatar from '../../../assets/img/author.jpg';
 import { Link } from 'react-router-dom';
-import { icons } from 'feather-icons';
+import Wave from '../../Waveform/Waveform';
 
 const config = {
    loopName: 'Chase',
@@ -14,7 +14,7 @@ const config = {
       'Realized with Fl Studio, Kontakt and Roland PC MK II. Please, send me a link of your work if you use my loop ;)',
 };
 
-const LoopItem = () => {
+const LoopItem = ({ url }) => {
    return (
       <div className='loopItem'>
          <div className='loop-head'>
@@ -40,8 +40,8 @@ const LoopItem = () => {
          </div>
 
          <div className='loop-body'>
-            <div className='waves'>
-               <p>Waves</p>
+            <div id='waveform' className='waves'>
+               <Wave url={url} />
             </div>
             <div className='flex'>
                <div className='description'>

@@ -1,6 +1,21 @@
+@import '../../variables.scss';
+
 .filters {
    // display: flex;
+   position: sticky;
+   top: 20px;
    width: 100%;
    padding-right: 20px;
    max-width: 216px;
+   overflow-y: scroll;
+   margin-right: 15px;
+   height: calc(100vh);
+   &::-webkit-scrollbar {
+      width: 6px;
+      background: rgba($color: $container, $alpha: 0);
+   }
+   &::-webkit-scrollbar-thumb {
+      border-radius: $border-radius;
+      background: $container;
+   }
 }
