@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 
 import Dashboard from './pages/Dashboard/Dashboard';
-import LoopsPage from './pages/LoopsPage/LoopsPage';
 
 const App = () => {
    return (
