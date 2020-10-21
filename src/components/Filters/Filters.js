@@ -71,16 +71,20 @@ const orderByConfig = {
 
    data: [
       {
-         value: 'date',
-         label: 'Date',
+         value: 'date-desc',
+         label: 'Date (Desc)',
       },
       {
-         value: 'downloads',
-         label: 'Downloads',
+         value: 'date-asc',
+         label: 'Date (Asc)',
       },
       {
-         value: 'comments',
-         label: 'Comments',
+         value: 'downloads-desc',
+         label: 'Downloads (Desc)',
+      },
+      {
+         value: 'downloads-asc',
+         label: 'Downloads (Asc)',
       },
    ],
 };

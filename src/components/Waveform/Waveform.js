@@ -1,16 +1,17 @@
 import React, { useEffect, useRef, useState } from 'react';
-
+import './styles.scss';
 import WaveSurfer from 'wavesurfer.js';
 
 const formWaveSurferOptions = (ref) => ({
    container: ref,
    waveColor: '#3a3b3c',
-   progressColor: '#ED6A5A',
-   cursorColor: '#eee',
+   progressColor: '#9f9f9f',
+   cursorColor: 'transparent',
    barWidth: 0,
    barRadius: 1,
    responsive: true,
-   height: 100,
+   height: 56,
+   hideScrollbar: true,
    // If true, normalize by the maximum peak instead of 1.0.
    normalize: true,
    // Use the PeakCache to improve rendering speed of large waveforms.
@@ -27,24 +28,22 @@ export default function Waveform({ url }) {
    // create new WaveSurfer instance
    // On component mount and when url changes
    useEffect(() => {
-      setPlay(false);
-
       const options = formWaveSurferOptions(waveformRef.current);
       wavesurfer.current = WaveSurfer.create(options);
 
       wavesurfer.current.load(url);
 
-      wavesurfer.current.on('ready', function () {
-         // https://wavesurfer-js.org/docs/methods.html
-         // wavesurfer.current.play();
-         // setPlay(true);
+      // wavesurfer.current.on('ready', function () {
+      //    // https://wavesurfer-js.org/docs/methods.html
+      //    // wavesurfer.current.play();
+      //    // setPlay(true);
 
-         // make sure object stillavailable when file loaded
-         if (wavesurfer.current) {
-            wavesurfer.current.setVolume(volume);
-            setVolume(volume);
-         }
-      });
+      //    // make sure object stillavailable when file loaded
+      //    if (wavesurfer.current) {
+      //       wavesurfer.current.setVolume(volume);
+      //       setVolume(volume);
+      //    }
+      // });
 
       // Removes events, elements and disconnects Web Audio nodes.
       // when component unmount
@@ -67,20 +66,12 @@ export default function Waveform({ url }) {
    };
 
    return (
-      <div>
-         <div
-            onClick={() => {
-               setPlay(true);
-               wavesurfer.current.play();
-            }}
-            id='waveform'
-            ref={waveformRef}
-         />
-         <div className='controls'>
-            <button onClick={handlePlayPause}>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+         <div className='controls' style={{ marginRight: 20 }}>
+            <div className='play-button' onClick={handlePlayPause}>
                {!playing ? 'Play' : 'Pause'}
-            </button>
-            <input
+            </div>
+            {/* <input
                type='range'
                id='volume'
                name='volume'
@@ -91,7 +82,10 @@ export default function Waveform({ url }) {
                step='.025'
                onChange={onVolumeChange}
                defaultValue={volume}
-            />
+            /> */}
+         </div>
+         <div style={{ flex: 1 }}>
+            <div id='waveform' ref={waveformRef} />
          </div>
       </div>
    );

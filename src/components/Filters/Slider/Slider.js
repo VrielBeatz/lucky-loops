@@ -46,13 +46,21 @@ const Slider = () => {
                            <div className='inp'>
                               {/* <label htmlFor='email'>From</label> */}
 
-                              <Field autoComplete='off' name='from' />
+                              <Field
+                                 autoComplete='off'
+                                 name='from'
+                                 placeholder='min'
+                              />
                            </div>
                            <span className='divid'>to</span>
                            <div className='inp'>
                               {/* <label htmlFor='email'>To</label> */}
 
-                              <Field autoComplete='off' name='to' />
+                              <Field
+                                 autoComplete='off'
+                                 name='to'
+                                 placeholder='max'
+                              />
                            </div>
                            {/* {config.data.map((option) => (
                               <div className='option'>
@@ -68,6 +76,9 @@ const Slider = () => {
                                  </label>
                               </div>
                            ))} */}
+                           <div className='save'>
+                              <button>SAVE</button>
+                           </div>
                         </div>
                      )}
 

@@ -37,12 +37,12 @@ const LoopItem = ({ url }) => {
                   </div>
                </div>
             </div>
+            <div className='waves'>
+               <Wave url={url} />
+            </div>
          </div>
 
          <div className='loop-body'>
-            <div id='waveform' className='waves'>
-               <Wave url={url} />
-            </div>
             <div className='flex'>
                <div className='description'>
                   <p>Description: {config.loopDesc}</p>

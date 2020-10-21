@@ -1,6 +1,7 @@
 import React from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
+import Button from '../Buttons/Button';
 
 const Header = () => {
    return (
@@ -12,7 +13,9 @@ const Header = () => {
                      <Link to='/'>Lucky Loops</Link>
                   </div>
                </div>
-               <div className='header-right'></div>
+               <div className='header-right'>
+                  <Button>Button</Button>
+               </div>
             </div>
          </div>
       </>

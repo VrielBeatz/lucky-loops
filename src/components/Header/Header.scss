@@ -4,8 +4,8 @@
    // background-color: $container;
    // border-bottom: 1px solid gray;
    // box-shadow: $box-shadow;
-   padding: 0 40px;
-   height: 82px;
+   padding: 0 20px;
+   height: $header-height;
    .header-wrapper {
       display: flex;
       height: 100%;
@@ -18,11 +18,15 @@
 
             a {
                font-weight: 700;
-               font-size: 3.2rem;
+               font-size: 2.8rem;
                display: flex;
                align-items: center;
             }
          }
+      }
+      .header-right {
+         display: flex;
+         align-content: center;
       }
    }
 }

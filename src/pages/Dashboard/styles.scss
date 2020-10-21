@@ -4,9 +4,34 @@
    .dashboard-wrapper {
       display: flex;
       .dashboard-left {
+         height: calc(100vh - 82px);
+         overflow-y: scroll;
+         &::-webkit-scrollbar {
+            width: 6px;
+            background: rgba($color: $container, $alpha: 0);
+         }
+         &::-webkit-scrollbar-thumb {
+            border-radius: $border-radius;
+            background: $container;
+         }
       }
       .dashboard-right {
+         padding-left: 20px;
          flex: 1;
+         overflow-x: hidden;
+         overflow-y: scroll;
+         height: calc(100vh - 82px);
+
+         &::-webkit-scrollbar {
+            width: 10px;
+            background: rgba($color: $container, $alpha: 0);
+            border-radius: $border-radius;
+            background: $container;
+         }
+         &::-webkit-scrollbar-thumb {
+            border-radius: $border-radius;
+            background: $gray;
+         }
       }
    }
 }
@@ -17,6 +42,10 @@
          flex-direction: column;
          .dashboard-left {
             display: none;
+         }
+         .dashboard-right {
+            padding-left: 5px;
+            flex: none;
          }
       }
    }
