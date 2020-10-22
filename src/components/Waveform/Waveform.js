@@ -15,7 +15,6 @@ const formWaveSurferOptions = (ref) => ({
    // If true, normalize by the maximum peak instead of 1.0.
    normalize: true,
    // Use the PeakCache to improve rendering speed of large waveforms.
-   partialRender: true,
    barGap: 0,
 });
 
@@ -67,23 +66,12 @@ export default function Waveform({ url }) {
 
    return (
       <div style={{ display: 'flex', alignItems: 'center' }}>
-         <div className='controls' style={{ marginRight: 20 }}>
+         {/* <div className='controls' style={{ marginRight: 20 }}>
             <div className='play-button' onClick={handlePlayPause}>
                {!playing ? 'Play' : 'Pause'}
             </div>
-            {/* <input
-               type='range'
-               id='volume'
-               name='volume'
-               // waveSurfer recognize value of `0` same as `1`
-               //  so we need to set some zero-ish value for silence
-               min='0.01'
-               max='1'
-               step='.025'
-               onChange={onVolumeChange}
-               defaultValue={volume}
-            /> */}
-         </div>
+            
+         </div> */}
          <div style={{ flex: 1 }}>
             <div id='waveform' ref={waveformRef} />
          </div>

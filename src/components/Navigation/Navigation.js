@@ -12,10 +12,6 @@ const Navigation = () => {
          path: '/dashboard/acapellas',
          displayPathName: 'Acapellas',
       },
-      {
-         path: '/dashboard/beats',
-         displayPathName: 'Beats',
-      },
    ];
    return (
       <div className='navigation'>

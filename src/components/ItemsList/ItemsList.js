@@ -8,11 +8,21 @@ const ItemsList = () => {
    return (
       <div className='itemsList'>
          <LoopItem url={loop1} />
-         <LoopItem url={loop2} />
          <LoopItem url={loop1} />
-         <LoopItem url={loop2} />
          <LoopItem url={loop1} />
-         <LoopItem url={loop2} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
+         <LoopItem url={loop1} />
       </div>
    );
 };

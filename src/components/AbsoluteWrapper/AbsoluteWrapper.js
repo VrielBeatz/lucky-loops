@@ -1,11 +1,8 @@
 import React from 'react';
+import './styles.scss';
 
 const AbsoluteWrapper = ({ children }) => {
-   return (
-      <div style={{ position: 'absolute', width: '100%', paddingTop: 25 }}>
-         {children}
-      </div>
-   );
+   return <div className='absolute-wrapper'>{children}</div>;
 };
 
 export default AbsoluteWrapper;

@@ -2,18 +2,22 @@
 
 .loopItem {
    margin-bottom: 30px;
-   margin-right: 50px;
+   cursor: pointer;
+   border-radius: $border-radius;
+   padding: 15px 18px;
+   // transition: 250ms;
+
+   &:hover {
+      background-color: rgba($color: $container, $alpha: 1);
+   }
    .loop-head {
-      height: 56px;
+      min-height: 56px;
       display: flex;
-      cursor: pointer;
-      border-radius: $border-radius;
-      &:hover {
-         background-color: rgba($color: $container, $alpha: 1);
-      }
+      flex-wrap: wrap;
+
       .loop-number {
          font-size: 1.6rem;
-         display: flex;
+         display: none;
          // display: none;
 
          align-items: center;
@@ -22,14 +26,11 @@
             text-align: center;
          }
       }
-      .waves {
-         flex: 1;
-         padding-left: 60px;
-      }
 
       .loop-author {
          height: 100%;
          display: flex;
+         align-items: center;
          // flex: 1;
 
          .author-avatar {
@@ -69,29 +70,41 @@
                color: $secondary-text;
                font-size: 1.3rem;
                font-weight: 400;
+               display: flex;
+               align-items: center;
                a {
-                  color: $secondary-text;
+                  // color: $secondary-text;
                   font-size: 1.3rem;
                   font-weight: 400;
                   &:hover {
                      text-decoration: underline;
                   }
                }
-               .file-size {
-                  margin-left: 15px;
+
+               i.divid {
+                  font-size: 4px;
+                  margin: 0 6px;
+               }
+               .loop-bpm {
+                  color: $primary-color;
+               }
+               .loop-key {
+                  color: $primary-color;
+                  i {
+                     font-size: 1rem;
+                  }
                }
             }
          }
       }
    }
+   .waves {
+      max-width: 100%;
+   }
 
    .loop-body {
-      display: none;
-      .waves {
-         margin: 10px 0;
-         //  height: 100px;
-         //  background-color: $gray;
-      }
+      // display: none;
+
       .flex {
          display: flex;
          .description {

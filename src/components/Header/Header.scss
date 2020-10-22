@@ -3,9 +3,14 @@
 .header {
    // background-color: $container;
    // border-bottom: 1px solid gray;
-   // box-shadow: $box-shadow;
+   box-shadow: $box-shadow;
+   box-shadow: 0 8px 15px 0 $black;
+
    padding: 0 20px;
    height: $header-height;
+   position: relative;
+   z-index: 3;
+
    .header-wrapper {
       display: flex;
       height: 100%;

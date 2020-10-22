@@ -35,13 +35,20 @@ const CatSelect = ({ config }) => {
                            </li>
                         ))}
                   </ul>
-                  {showAll < config.data.length && (
-                     <p
+                  {showAll < config.data.length ? (
+                     <span
                         className='show-more'
                         onClick={() => setShowAll(config.data.length)}
                      >
                         + Show more {config.data.length - config.displayed}
-                     </p>
+                     </span>
+                  ) : (
+                     <span
+                        className='show-more'
+                        onClick={() => setShowAll(config.displayed)}
+                     >
+                        - Hide {config.data.length - config.displayed}
+                     </span>
                   )}
                   {/* <div>{values[config.dataName]}</div> */}
                   <div className='divider'></div>
