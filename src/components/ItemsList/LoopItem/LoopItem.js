@@ -1,49 +1,98 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './styles.scss';
-import authorAvatar from '../../../assets/img/author.jpg';
 import { Link } from 'react-router-dom';
 import Wave from '../../Waveform/Waveform';
 
-const LoopItem = ({ url }) => {
-   const config = {
-      loopName: 'Chase',
-      authorName: 'Haru436',
-      authorAvatar: authorAvatar,
-      loopKey: 'F#',
-      loopBpm: 120,
-      loopURL: url,
-      loopSize: '1.64mb',
-      loopDesc:
-         'Realized with Fl Studio, Kontakt and Roland PC MK II. Please, send me a link of your work if you use my loop ;)',
+const LoopItem = ({
+   loopName,
+   authorName,
+   authorAvatar,
+   loopKey,
+   loopBpm,
+   loopURL,
+   loopCategory,
+   loopGenre,
+   loopSize,
+   loopDesc,
+   id,
+   setCurrentPlaying,
+   currentPlaying,
+   number,
+}) => {
+   const [playing, setPlay] = useState(false);
+
+   useEffect(() => {
+      if (currentPlaying !== number) {
+         setPlay(false);
+      }
+   }, [currentPlaying]);
+
+   const handlePlay = () => {
+      setCurrentPlaying(number);
+      setPlay((prev) => !prev);
+   };
+   const handleUpperCase = (word, sep = '-') => {
+      if (word.includes(sep)) {
+         const w = word.indexOf(sep);
+         const wordUppercased =
+            word.charAt(0).toUpperCase() +
+            word.slice(1, w) +
+            ' ' +
+            word.charAt(w + 1).toUpperCase() +
+            word.slice(w + 2);
+
+         return wordUppercased;
+      } else return word.charAt(0).toUpperCase() + word.slice(1);
    };
 
    return (
       <div className='loopItem'>
-         <div className='loop-head'>
-            <div className='loop-number'>
-               <span>1</span>
+         <div className='loop-head' onClick={handlePlay}>
+            <div
+               // onClick={handlePlay}
+               className={playing ? 'loop-number playing' : 'loop-number'}
+            >
+               <span>{number}</span>
+               <button className='play-button'>
+                  {playing ? (
+                     <i class='far fa-pause-circle'></i>
+                  ) : (
+                     <i class='far fa-play-circle'></i>
+                  )}
+               </button>
             </div>
             <div className='loop-author'>
                <div className='author-avatar'>
-                  <img src={config.authorAvatar} alt='author' />
+                  <img src={authorAvatar} alt='author' />
+                  <div className='avatar-content'></div>
                </div>
                <div className='loop-info'>
-                  <div className='loop-name'>
-                     <Link>{config.loopName}</Link>
+                  <div className={playing ? 'loop-name playing' : 'loop-name'}>
+                     <Link>{loopName}</Link>
                   </div>
                   <div className='author-name'>
                      <span>
-                        by <Link>{config.authorName}</Link>
+                        by <Link>{authorName}</Link>
                      </span>
 
                      <i className='fas fa-circle divid'></i>
 
-                     <span className='loop-bpm'>{config.loopBpm}BPM</span>
+                     <span className='loop-bpm'>{loopBpm}BPM</span>
 
                      <i className='fas fa-circle divid'></i>
 
                      <span className='loop-key'>
-                        <i className='fas fa-music'></i> {config.loopKey}
+                        <i className='fas fa-music'></i> {loopKey}
+                     </span>
+                     <i className='fas fa-circle divid'></i>
+                     <span className='loop-bpm'>
+                        {handleUpperCase(loopGenre)}
+                     </span>
+
+                     <i className='fas fa-circle divid'></i>
+
+                     <span className='loop-bpm'>
+                        {handleUpperCase(loopCategory)}
                      </span>
                   </div>
                </div>
@@ -58,7 +107,14 @@ const LoopItem = ({ url }) => {
             </div> */}
          </div>
          <div className='waves'>
-            <Wave url={config.loopURL} />
+            <Wave
+               setCurrentPlaying={setCurrentPlaying}
+               currentPlaying={currentPlaying}
+               setPlay={setPlay}
+               playing={playing}
+               url={loopURL}
+               number={number}
+            />
          </div>
 
          <div className='loop-tags'>

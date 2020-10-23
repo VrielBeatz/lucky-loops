@@ -10,20 +10,47 @@
    &:hover {
       background-color: rgba($color: $container, $alpha: 1);
    }
+   &:hover .loop-head .loop-number button {
+      display: flex;
+   }
+   &:hover .loop-head .loop-number span {
+      display: none;
+   }
    .loop-head {
       min-height: 56px;
       display: flex;
       flex-wrap: wrap;
-
+      padding-bottom: 20px;
+      .loop-number.playing {
+         span {
+            display: none;
+         }
+         button {
+            display: flex;
+         }
+      }
       .loop-number {
          font-size: 1.6rem;
-         display: none;
-         // display: none;
+         display: flex;
+         width: 56px;
 
+         // display: none;
+         justify-content: center;
          align-items: center;
          span {
-            width: 50px;
-            text-align: center;
+         }
+         button {
+            display: none;
+            outline: none;
+            border: none;
+            height: fit-content;
+            width: fit-content;
+            background-color: transparent;
+            cursor: pointer;
+            i {
+               font-size: 35px;
+               color: $white;
+            }
          }
       }
 
@@ -38,13 +65,28 @@
             overflow: hidden;
             width: 56px;
             height: 56px;
-            background-color: $black;
+            // background-color: $black;
+            position: relative;
 
             img {
                width: 100%;
                height: 100%;
                object-fit: cover;
                object-position: center;
+            }
+            .avatar-content {
+               position: absolute;
+               top: 0;
+               left: 0;
+               bottom: 0;
+               right: 0;
+               display: flex;
+               opacity: 0;
+
+               align-items: center;
+               justify-content: center;
+               background-color: rgba($color: $black, $alpha: 0.5);
+               z-index: 1;
             }
          }
          .loop-info {
@@ -63,6 +105,11 @@
                   &:hover {
                      text-decoration: underline;
                   }
+               }
+            }
+            .loop-name.playing {
+               a {
+                  color: $primary-color;
                }
             }
             .author-name {
@@ -99,6 +146,7 @@
       }
    }
    .waves {
+      // display: none;
       max-width: 100%;
    }
 

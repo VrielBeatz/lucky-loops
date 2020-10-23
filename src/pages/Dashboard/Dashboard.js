@@ -63,26 +63,21 @@ const Dashboard = () => {
                   <Navigation />
                </div>
                <div className='dashboard-content'>
-                  {transitions.map(({ item, props, key }) => (
+                  <ScrollToTop>
+                     <Switch>
+                        <Route path='/dashboard/loops' component={LoopsPage} />
+                        <Route
+                           path='/dashboard/acapellas'
+                           component={Acapellas}
+                        />
+                        <Route path='/dashboard/beats' component={Beats} />
+                     </Switch>
+                  </ScrollToTop>
+                  {/* {transitions.map(({ item, props, key }) => (
                      <animated.div key={key} style={props}>
-                        <ScrollToTop>
-                           <Switch location={item}>
-                              <Route
-                                 path='/dashboard/loops'
-                                 component={LoopsPage}
-                              />
-                              <Route
-                                 path='/dashboard/acapellas'
-                                 component={Acapellas}
-                              />
-                              <Route
-                                 path='/dashboard/beats'
-                                 component={Beats}
-                              />
-                           </Switch>
-                        </ScrollToTop>
+                        
                      </animated.div>
-                  ))}
+                  ))} */}
                </div>
             </div>
          </div>

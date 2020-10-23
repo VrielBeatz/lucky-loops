@@ -6,9 +6,9 @@ const formWaveSurferOptions = (ref) => ({
    container: ref,
    waveColor: '#3a3b3c',
    progressColor: '#9f9f9f',
-   cursorColor: 'transparent',
+   cursorColor: '#9f9f9f',
    barWidth: 0,
-   barRadius: 1,
+   barRadius: 0,
    responsive: true,
    height: 56,
    hideScrollbar: true,
@@ -18,62 +18,60 @@ const formWaveSurferOptions = (ref) => ({
    barGap: 0,
 });
 
-export default function Waveform({ url }) {
+export default function Waveform({
+   url,
+   playing,
+   setPlay,
+   id,
+   setCurrentPlaying,
+   currentPlaying,
+   number,
+}) {
    const waveformRef = useRef(null);
    const wavesurfer = useRef(null);
-   const [playing, setPlay] = useState(false);
-   const [volume, setVolume] = useState(0.5);
 
-   // create new WaveSurfer instance
-   // On component mount and when url changes
    useEffect(() => {
       const options = formWaveSurferOptions(waveformRef.current);
       wavesurfer.current = WaveSurfer.create(options);
 
       wavesurfer.current.load(url);
 
-      // wavesurfer.current.on('ready', function () {
-      //    // https://wavesurfer-js.org/docs/methods.html
-      //    // wavesurfer.current.play();
-      //    // setPlay(true);
-
-      //    // make sure object stillavailable when file loaded
-      //    if (wavesurfer.current) {
-      //       wavesurfer.current.setVolume(volume);
-      //       setVolume(volume);
-      //    }
-      // });
-
-      // Removes events, elements and disconnects Web Audio nodes.
-      // when component unmount
+      if (currentPlaying !== number) {
+         wavesurfer.current.pause();
+         setPlay(false);
+      }
+      wavesurfer.current.on('play', () => {
+         setCurrentPlaying(number);
+         setPlay(true);
+      });
+      wavesurfer.current.on('pause', () => {
+         // wavesurfer.current.params.container.style.opacity = 0.2;
+         setPlay(false);
+      });
+      wavesurfer.current.on('seek', () => {
+         wavesurfer.current.play();
+         setPlay(true);
+      });
+      wavesurfer.current.on('finish', () => {
+         console.log('finish');
+         wavesurfer.current.play();
+      });
       return () => wavesurfer.current.destroy();
    }, [url]);
 
-   const handlePlayPause = () => {
-      setPlay(!playing);
-      wavesurfer.current.playPause();
-   };
-
-   const onVolumeChange = (e) => {
-      const { target } = e;
-      const newVolume = +target.value;
-
-      if (newVolume) {
-         setVolume(newVolume);
-         wavesurfer.current.setVolume(newVolume || 1);
+   useEffect(() => {
+      if (playing) {
+         wavesurfer.current.play();
+         setCurrentPlaying(number);
+      } else if (!playing) {
+         wavesurfer.current.pause();
       }
-   };
+   }, [playing]);
 
    return (
       <div style={{ display: 'flex', alignItems: 'center' }}>
-         {/* <div className='controls' style={{ marginRight: 20 }}>
-            <div className='play-button' onClick={handlePlayPause}>
-               {!playing ? 'Play' : 'Pause'}
-            </div>
-            
-         </div> */}
          <div style={{ flex: 1 }}>
-            <div id='waveform' ref={waveformRef} />
+            <div id={'waveform' + id} ref={waveformRef} />
          </div>
       </div>
    );
