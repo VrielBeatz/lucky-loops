@@ -1,0 +1,31 @@
+@import '../../variables.scss';
+
+.button {
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 12px 20px;
+   border-radius: $border-radius;
+   outline: none;
+   border: none;
+   font-size: 1.6rem;
+   background-color: transparent;
+   color: $primary-color;
+   cursor: pointer;
+   width: 100%;
+   &:hover {
+      opacity: 0.8;
+   }
+}
+.button.google-light-btn {
+   background-image: url('../../assets/brands//google/btn_google_light.png');
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+}
+.button.google-dark-btn {
+   background-image: url('../../assets/brands//google/btn_google_dark.png');
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+}

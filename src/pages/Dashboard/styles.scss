@@ -5,8 +5,8 @@
       display: flex;
       .dashboard-left {
          position: sticky;
-         top: 0;
-         height: calc(100vh);
+         top: 82px;
+         height: calc(100vh - 82px);
          overflow-y: scroll;
          margin-right: 50px;
 
@@ -41,7 +41,7 @@
          }
          .dashboard-nav {
             position: sticky;
-            top: 0;
+            top: 82px;
             // margin-right: 50px;
             background-color: $container;
             z-index: 5;

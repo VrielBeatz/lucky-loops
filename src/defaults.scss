@@ -1,21 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
 @import './variables.scss';
-// ::-webkit-scrollbar {
-//    width: 10px;
-//    background: rgba($color: $container, $alpha: 0);
-//    border-radius: $border-radius;
-//    background: $container;
-// }
-// ::-webkit-scrollbar-thumb {
-//    border-radius: $border-radius;
-//    background: $gray;
-// }
+::-webkit-scrollbar {
+   width: 10px;
+   background: rgba($color: $container, $alpha: 0);
+   border-radius: $border-radius;
+   background: $container;
+}
+::-webkit-scrollbar-thumb {
+   border-radius: $border-radius;
+   background: $gray;
+}
 * {
    margin: 0;
    padding: 0;
    box-sizing: border-box;
    letter-spacing: 0.2px;
+   -webkit-tap-highlight-color: transparent;
 }
+
 html {
    font-size: 10px;
    scroll-behavior: smooth;

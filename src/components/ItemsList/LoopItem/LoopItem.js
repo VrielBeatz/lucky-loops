@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './styles.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import Wave from '../../Waveform/Waveform';
 
 const LoopItem = ({
@@ -21,6 +21,8 @@ const LoopItem = ({
 }) => {
    const [playing, setPlay] = useState(false);
 
+   const location = useLocation();
+
    useEffect(() => {
       if (currentPlaying !== number) {
          setPlay(false);
@@ -31,6 +33,7 @@ const LoopItem = ({
       setCurrentPlaying(number);
       setPlay((prev) => !prev);
    };
+
    const handleUpperCase = (word, sep = '-') => {
       if (word.includes(sep)) {
          const w = word.indexOf(sep);
@@ -55,9 +58,9 @@ const LoopItem = ({
                <span>{number}</span>
                <button className='play-button'>
                   {playing ? (
-                     <i class='far fa-pause-circle'></i>
+                     <i className='far fa-pause-circle'></i>
                   ) : (
-                     <i class='far fa-play-circle'></i>
+                     <i className='far fa-play-circle'></i>
                   )}
                </button>
             </div>
@@ -68,11 +71,20 @@ const LoopItem = ({
                </div>
                <div className='loop-info'>
                   <div className={playing ? 'loop-name playing' : 'loop-name'}>
-                     <Link>{loopName}</Link>
+                     <Link
+                        to={`${
+                           location.pathname
+                        }/details/${id}/${loopName
+                           .toLowerCase()
+                           .split(' ')
+                           .join('-')}`}
+                     >
+                        {loopName}
+                     </Link>
                   </div>
                   <div className='author-name'>
                      <span>
-                        by <Link>{authorName}</Link>
+                        by <Link to='/'>{authorName}</Link>
                      </span>
 
                      <i className='fas fa-circle divid'></i>

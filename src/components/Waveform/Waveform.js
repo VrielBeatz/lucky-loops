@@ -46,15 +46,15 @@ export default function Waveform({
       });
       wavesurfer.current.on('pause', () => {
          // wavesurfer.current.params.container.style.opacity = 0.2;
-         setPlay(false);
+         // setPlay(false);
       });
       wavesurfer.current.on('seek', () => {
          wavesurfer.current.play();
          setPlay(true);
       });
       wavesurfer.current.on('finish', () => {
-         console.log('finish');
          wavesurfer.current.play();
+         setPlay(true);
       });
       return () => wavesurfer.current.destroy();
    }, [url]);

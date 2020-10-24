@@ -22,7 +22,7 @@ const CatSelect = ({ config }) => {
                      {config.data
                         .slice(0, showAll)
                         .map(({ displaName, name }, i) => (
-                           <li>
+                           <li key={i}>
                               <Field
                                  type='radio'
                                  id={name}
@@ -31,7 +31,7 @@ const CatSelect = ({ config }) => {
                               />
                               <label htmlFor={name}>{displaName}</label>
 
-                              <div class='check'></div>
+                              <div className='check'></div>
                            </li>
                         ))}
                   </ul>

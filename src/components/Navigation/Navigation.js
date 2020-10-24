@@ -5,19 +5,20 @@ import NavigationOption from './NavigationOption/NavigationOption';
 const Navigation = () => {
    const navigationOptions = [
       {
-         path: '/dashboard/loops',
+         path: '/loops',
          displayPathName: 'Loops / Samples',
       },
       {
-         path: '/dashboard/acapellas',
+         path: '/acapellas',
          displayPathName: 'Acapellas',
       },
    ];
    return (
       <div className='navigation'>
          <ul>
-            {navigationOptions.map(({ path, displayPathName }) => (
+            {navigationOptions.map(({ path, displayPathName }, i) => (
                <NavigationOption
+                  key={i}
                   path={path}
                   displayPathName={displayPathName}
                />

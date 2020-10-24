@@ -1,0 +1,47 @@
+@import '../../../variables.scss';
+
+.sign-in__wrapper {
+   h2 {
+      font-size: 3rem;
+      margin-bottom: 30px;
+   }
+   .login-by {
+      display: flex;
+      button {
+         border-radius: 50px;
+      }
+   }
+   .or {
+      text-align: center;
+      margin: 19px 0 13px;
+      display: flex;
+      justify-content: center;
+      .linner {
+         display: block;
+         background-color: $gray;
+         width: 100%;
+         height: 1px;
+         line-height: 10px;
+      }
+      .or-text {
+         padding: 0 20px;
+         color: $secondary-text;
+         font-size: 1.4rem;
+         font-weight: 400;
+      }
+   }
+   .submit {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      a {
+         width: 40%;
+         font-size: 1.2rem;
+         text-decoration: underline;
+      }
+      button {
+         width: 40%;
+      }
+   }
+}

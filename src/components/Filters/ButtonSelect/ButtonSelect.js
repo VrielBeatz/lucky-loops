@@ -27,8 +27,8 @@ const ButtonSelect = ({ config }) => {
                                  : 'options-container'
                            }
                         >
-                           {config.data.map((option) => (
-                              <div className='option'>
+                           {config.data.map((option, i) => (
+                              <div key={i} className='option'>
                                  <Field
                                     className='radio'
                                     type='radio'

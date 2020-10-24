@@ -12,7 +12,7 @@ const Homepage = () => {
                   <h1>
                      Looking for quality loops and samples for your project?
                   </h1>
-                  <Link to='/dashboard/loops'>Go to your Dashboard</Link>
+                  <Link to='/loops'>Go to your Dashboard</Link>
                </div>
 
                <video

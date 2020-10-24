@@ -85,6 +85,9 @@
             &:hover label {
                color: $primary-text;
             }
+            &:hover {
+               background-color: $gray;
+            }
          }
          &.active {
             max-height: 150px;

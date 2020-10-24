@@ -1,45 +1,32 @@
 import React from 'react';
 import './styles.scss';
-import { useTransition, animated } from 'react-spring';
 import ScrollToTop from '../../components/ScrollToTop/ScrollToTop';
 
 import Navigation from '../../components/Navigation/Navigation';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch, useLocation, useParams } from 'react-router-dom';
 import LoopsPage from '../../pages/LoopsPage/LoopsPage';
 import AbsoluteWrapper from '../../components/AbsoluteWrapper/AbsoluteWrapper';
 import bannerVid from '../../assets/videos/banner.mp4';
 
 import Filters from '../../components/Filters/Filters';
 import ItemList from '../../components/ItemsList/ItemsList';
+import { loops } from '../LoopsPage/LoopsPage';
+import Loop from '../../components/Loop/Loop';
 
 const Acapellas = () => {
    return (
       <AbsoluteWrapper>
          <h1>Acapellas</h1>
-         <ItemList />
-      </AbsoluteWrapper>
-   );
-};
-
-const Beats = () => {
-   return (
-      <AbsoluteWrapper>
-         <h1>Beats</h1>
+         <ItemList loops={loops} />
       </AbsoluteWrapper>
    );
 };
 
 const Dashboard = () => {
    const location = useLocation();
-   const transitions = useTransition(
-      location,
-      (location) => location.pathname,
-      {
-         from: { opacity: 0 },
-         enter: { opacity: 1 },
-         leave: { opacity: 0 },
-      }
-   );
+
+   console.log(location.pathname);
+
    return (
       <div className='dashboard-container page-container'>
          <div className='dashboard-wrapper'>
@@ -65,19 +52,17 @@ const Dashboard = () => {
                <div className='dashboard-content'>
                   <ScrollToTop>
                      <Switch>
-                        <Route path='/dashboard/loops' component={LoopsPage} />
+                        <Route
+                           exact
+                           path='/dashboard/loops'
+                           component={LoopsPage}
+                        />
                         <Route
                            path='/dashboard/acapellas'
                            component={Acapellas}
                         />
-                        <Route path='/dashboard/beats' component={Beats} />
                      </Switch>
                   </ScrollToTop>
-                  {/* {transitions.map(({ item, props, key }) => (
-                     <animated.div key={key} style={props}>
-                        
-                     </animated.div>
-                  ))} */}
                </div>
             </div>
          </div>
