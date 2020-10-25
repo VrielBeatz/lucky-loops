@@ -1,25 +1,47 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.scss';
-import { Formik, Form, yupToFormErrors } from 'formik';
+import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import TextField from '../../Forms/TextField/TextField';
 import AuthContainer from '../authContainer/authContainer';
 import Button from '../../Button/Button';
 import { Link } from 'react-router-dom';
+import { signInUser } from '../../../redux/user/user.actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+
+const mapState = ({ user }) => ({
+   errors: user.signInErrors,
+   currentUser: user.currentUser,
+});
 
 const SignIn = () => {
+   const { errors, currentUser } = useSelector(mapState);
+   const dispatch = useDispatch();
+   const history = useHistory();
    const initialValues = {
       email: '',
       password: '',
    };
    const validationSchema = Yup.object().shape({
-      email: Yup.string().email().required('required'),
-      password: Yup.string().min(6).required(),
+      email: Yup.string().email().required(),
+      password: Yup.string().min(6).max(30).required(),
    });
+
+   const handleSignIn = ({ email, password }) => {
+      dispatch(signInUser({ email, password }));
+   };
+
+   useEffect(() => {
+      if (currentUser) {
+         history.push('/');
+      }
+   }, [currentUser]);
    return (
       <div className='sign-in__wrapper'>
          <AuthContainer>
             <h2>Sign in</h2>
+            {errors}
             <div className='login-by'>
                <Button className='button google-dark-btn'></Button>
                <Button>Facebook</Button>
@@ -29,7 +51,11 @@ const SignIn = () => {
                <h4 className='or-text'>or</h4>
                <span className='linner'></span>
             </div>
-            <Formik validationSchema initialValues={initialValues}>
+            <Formik
+               onSubmit={handleSignIn}
+               validationSchema={validationSchema}
+               initialValues={initialValues}
+            >
                {({ values }) => (
                   <Form>
                      <TextField name='email' type='email' label='Email' />

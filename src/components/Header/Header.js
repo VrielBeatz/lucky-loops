@@ -2,8 +2,14 @@ import React from 'react';
 import './Header.scss';
 import { Link } from 'react-router-dom';
 import LinkButton from '../LinkButtons/LinkButton';
+import { useSelector } from 'react-redux';
+import { auth } from '../../firebase/firebaseUtils';
 
 const Header = () => {
+   const { currentUser } = useSelector(({ user }) => ({
+      currentUser: user.currentUser,
+   }));
+   console.log(currentUser);
    return (
       <>
          <div style={{ height: 82 }}></div>
@@ -14,9 +20,24 @@ const Header = () => {
                      <Link to='/'>Lucky Loops</Link>
                   </div>
                </div>
+
                <div className='header-right'>
-                  <LinkButton to='sign-in'>Sign in</LinkButton>
-                  <LinkButton to='sign-up'>Sign up</LinkButton>
+                  {!currentUser ? (
+                     <div>
+                        <LinkButton to='sign-in'>Sign in</LinkButton>
+                        <LinkButton to='sign-up'>Sign up</LinkButton>
+                     </div>
+                  ) : (
+                     <div className='loggedIn'>
+                        <button
+                           onClick={() => {
+                              auth.signOut();
+                           }}
+                        >
+                           Log out
+                        </button>
+                     </div>
+                  )}
                </div>
             </div>
          </div>

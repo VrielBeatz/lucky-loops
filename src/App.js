@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Header from './components/Header/Header';
 
@@ -9,8 +9,24 @@ import LoopsPage from './pages/LoopsPage/LoopsPage';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import SignIn from './components/Auth/SignIn/SignIn';
 import SignUp from './components/Auth/SignUp/SignUp';
+import { auth } from './firebase/firebaseUtils';
+import { useDispatch } from 'react-redux';
+import { setCurrentUser } from './redux/user/user.actions';
 
 const App = () => {
+   const dispatch = useDispatch();
+   useEffect(() => {
+      const authListener = auth.onAuthStateChanged(async (userAuth) => {
+         if (userAuth) {
+            dispatch(setCurrentUser(userAuth));
+         } else {
+            dispatch(setCurrentUser(null));
+         }
+      });
+      return () => {
+         authListener();
+      };
+   }, []);
    return (
       <>
          <Header />
