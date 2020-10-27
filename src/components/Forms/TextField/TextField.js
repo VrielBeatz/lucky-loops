@@ -4,7 +4,7 @@ import { Field, ErrorMessage } from 'formik';
 
 const TextField = ({ name, type = 'text', placeholder = '', label }) => {
    return (
-      <>
+      <div className='textField'>
          <div className='form__group field'>
             <Field
                type={type}
@@ -17,8 +17,10 @@ const TextField = ({ name, type = 'text', placeholder = '', label }) => {
                {label}
             </label>
          </div>
-         <ErrorMessage name={name} />
-      </>
+         <div className='errors'>
+            <ErrorMessage name={name} />
+         </div>
+      </div>
    );
 };
 

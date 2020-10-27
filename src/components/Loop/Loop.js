@@ -8,7 +8,7 @@ const Loop = () => {
 
    return (
       <AbsoluteWrapper>
-         <h1>{name.split('-').join(' ').toUpperCase()}</h1>
+         <h1>{name.split('-').join(' ')}</h1>
          <h1>{id}</h1>
       </AbsoluteWrapper>
    );

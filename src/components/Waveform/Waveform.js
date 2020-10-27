@@ -13,7 +13,7 @@ const formWaveSurferOptions = (ref) => ({
    height: 56,
    hideScrollbar: true,
    // If true, normalize by the maximum peak instead of 1.0.
-   normalize: true,
+   // normalize: true,
    // Use the PeakCache to improve rendering speed of large waveforms.
    barGap: 0,
 });

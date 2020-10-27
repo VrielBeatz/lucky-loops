@@ -1,7 +1,13 @@
 import userTypes from './user.types';
-import { auth } from '../../firebase/firebaseUtils';
+import { auth, firestore } from '../../firebase/firebaseUtils';
 
-const { SET_CURRENT_USER, SIGN_IN_ERRORS, SIGN_IN_SUCCESS } = userTypes;
+const {
+   SET_CURRENT_USER,
+   SIGN_IN_ERRORS,
+   SIGN_IN_SUCCESS,
+   SIGN_UP_SUCCESS,
+   SIGN_UP_ERRORS,
+} = userTypes;
 
 export const setCurrentUser = (user) => ({
    type: SET_CURRENT_USER,
@@ -25,5 +31,29 @@ export const signInUser = ({ email, password }) => async (dispatch) => {
       dispatch(signInErrors([]));
    } catch (errors) {
       dispatch(signInErrors([errors.message]));
+   }
+};
+
+export const signUpSuccess = (payload) => ({
+   type: SIGN_UP_SUCCESS,
+   payload: payload,
+});
+export const signUpErrors = (errors) => ({
+   type: SIGN_UP_ERRORS,
+   payload: errors,
+});
+
+export const signUpUser = ({ email, password, username }) => async (
+   dispatch
+) => {
+   try {
+      const res = await auth.createUserWithEmailAndPassword(email, password);
+      await firestore.collection('users').doc(res.user.uid).set({
+         username: username,
+         email: email,
+      });
+      dispatch(signUpSuccess(true));
+   } catch (errors) {
+      dispatch(signUpErrors([errors.message]));
    }
 };

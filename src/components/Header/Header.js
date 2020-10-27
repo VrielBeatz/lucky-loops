@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import LinkButton from '../LinkButtons/LinkButton';
 import { useSelector } from 'react-redux';
 import { auth } from '../../firebase/firebaseUtils';
+import Button from '../Button/Button';
 
 const Header = () => {
    const { currentUser } = useSelector(({ user }) => ({
@@ -29,13 +30,13 @@ const Header = () => {
                      </div>
                   ) : (
                      <div className='loggedIn'>
-                        <button
+                        <Button
                            onClick={() => {
                               auth.signOut();
                            }}
                         >
                            Log out
-                        </button>
+                        </Button>
                      </div>
                   )}
                </div>
