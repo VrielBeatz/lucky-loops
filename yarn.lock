@@ -4447,6 +4447,11 @@ duplexify@^3.4.2, duplexify@^3.6.0:
     readable-stream "^2.0.0"
     stream-shift "^1.0.0"
 
+duration-time-conversion@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/duration-time-conversion/-/duration-time-conversion-1.0.1.tgz#f39288ac0ac91b1850cb63716a39c448b2071863"
+  integrity sha512-LtE+tBHJ5Pqvmm3uLT4Kc8RnYJnZL2w1tIYxuotP8aemEF4ekoAapl+NdXYPke6bMgMTxpFIKBk2yCnWOVDyIw==
+
 ecc-jsbn@~0.1.1:
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.2.tgz#3a83a904e54353287874c564b7549386849a98c9"
@@ -7284,7 +7289,7 @@ kind-of@^5.0.0:
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-5.1.0.tgz#729c91e2d857b7a419a1f9aa65685c4c33f5845d"
   integrity sha512-NGEErnH6F2vUuXDh+OlbcKW7/wOcfdRHaZ7VWtqCztfHri/++YKmP51OdWeGPuqCOba6kk2OTe5d02VmTB80Pw==
 
-kind-of@^6.0.0, kind-of@^6.0.2:
+kind-of@^6.0.0, kind-of@^6.0.2, kind-of@^6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-6.0.3.tgz#07c05034a6c349fa06e24fa35aa76db4580ce4dd"
   integrity sha512-dcS1ul+9tmeD95T+x28/ehLgd9mENa3LsvDTtzm3vyBEO7RPptvAD+t44WVXaUjTBRcrpFeFlC8WCruUR456hw==
@@ -8325,6 +8330,13 @@ optimize-css-assets-webpack-plugin@5.0.3:
   dependencies:
     cssnano "^4.1.10"
     last-call-webpack-plugin "^3.0.0"
+
+option-validator@^2.0.5:
+  version "2.0.6"
+  resolved "https://registry.yarnpkg.com/option-validator/-/option-validator-2.0.6.tgz#a314dae65e26db5f948ef0ff96fc88f18bb76ed6"
+  integrity sha512-tmZDan2LRIRQyhUGvkff68/O0R8UmF+Btmiiz0SmSw2ng3CfPZB9wJlIjHpe/MKUZqyIZkVIXCrwr1tIN+0Dzg==
+  dependencies:
+    kind-of "^6.0.3"
 
 optionator@^0.8.1, optionator@^0.8.3:
   version "0.8.3"
@@ -11941,6 +11953,15 @@ websocket-extensions@>=0.1.1:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/websocket-extensions/-/websocket-extensions-0.1.3.tgz#5d2ff22977003ec687a4b87073dfbbac146ccf29"
   integrity sha512-nqHUnMXmBzT0w570r2JpJxfiSD1IzoI+HGVdd3aZ0yNi3ngvQ4jv1dtHt5VGxfI2yj5yqImPhOK4vmIh2xMbGg==
+
+wfplayer@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/wfplayer/-/wfplayer-1.1.3.tgz#799922bd1c2ecf23b14fad06d5e27bb4999c7cde"
+  integrity sha512-D45ZTmyIhiUNOPLVZhXVkwPxszluYe4rzRoeG7n2UMb4YrxB9BquOrjNqfhSBsFgkknDdZOlvXQC/4IGGZUHHQ==
+  dependencies:
+    duration-time-conversion "^1.0.1"
+    lodash "^4.17.15"
+    option-validator "^2.0.5"
 
 whatwg-encoding@^1.0.1, whatwg-encoding@^1.0.3, whatwg-encoding@^1.0.5:
   version "1.0.5"

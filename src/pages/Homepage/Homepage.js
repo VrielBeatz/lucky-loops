@@ -18,7 +18,6 @@ const Homepage = () => {
                <video
                   autoPlay
                   muted
-                  preload
                   loop
                   className='head-video'
                   src={headVideo}

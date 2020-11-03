@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './styles.scss';
 import WaveSurfer from 'wavesurfer.js';
-
 const formWaveSurferOptions = (ref) => ({
    container: ref,
    waveColor: '#3a3b3c',

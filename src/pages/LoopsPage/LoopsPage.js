@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './styles.scss';
 import ItemsList from '../../components/ItemsList/ItemsList';
 import AbsoluteWrapper from '../../components/AbsoluteWrapper/AbsoluteWrapper';
@@ -7,63 +7,74 @@ import authorAvatar from '../../assets/img/author.jpg';
 import bannerVid from '../../assets/videos/banner.mp4';
 import Navigation from '../../components/Navigation/Navigation';
 import Filters from '../../components/Filters/Filters';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLoops } from '../../redux/loops/loops.actions';
 
-export const loops = [
-   {
-      loopName: 'Chase',
-      authorName: 'Haru436',
-      authorAvatar: authorAvatar,
-      loopKey: 'F#',
-      loopBpm: 120,
-      loopGenre: 'hip-hop',
-      loopCategory: 'sitar',
-      loopURL: loop1,
-      loopSize: '1.64mb',
-      loopDesc:
-         'Realized with Fl Studio, Kontakt and Roland PC MK II. Please, send me a link of your work if you use my loop ;)',
-   },
-   {
-      loopName: 'Push to go',
-      authorName: 'Haru436',
-      authorAvatar: authorAvatar,
-      loopKey: 'F#',
-      loopBpm: 120,
-      loopGenre: 'hip-hop',
-      loopCategory: 'sitar',
-      loopURL: loop1,
-      loopSize: '1.64mb',
-      loopDesc:
-         'Realized with Fl Studio, Kontakt and Roland PC MK II. Please, send me a link of your work if you use my loop ;)',
-   },
-   {
-      loopName: 'Fight',
-      authorName: 'Haru436',
-      authorAvatar: authorAvatar,
-      loopKey: 'F#',
-      loopBpm: 120,
-      loopGenre: 'hip-hop',
-      loopCategory: 'sitar',
-      loopURL: loop1,
-      loopSize: '1.64mb',
-      loopDesc:
-         'Realized with Fl Studio, Kontakt and Roland PC MK II. Please, send me a link of your work if you use my loop ;)',
-   },
-   {
-      loopName: 'Run',
-      authorName: 'Haru436',
-      authorAvatar: authorAvatar,
-      loopKey: 'F#',
-      loopBpm: 120,
-      loopGenre: 'hip-hop',
-      loopCategory: 'sitar',
-      loopURL: loop1,
-      loopSize: '1.64mb',
-      loopDesc:
-         'Realized with Fl Studio, Kontakt and Roland PC MK II. Please, send me a link of your work if you use my loop ;)',
-   },
-];
+// export const loops = [
+//    {
+//       loopName: 'Chase',
+//       authorName: 'Haru436',
+//       authorAvatar: authorAvatar,
+//       loopKey: 'F#',
+//       loopBpm: 120,
+//       loopGenre: 'hip-hop',
+//       loopCategory: 'sitar',
+//       loopURL: loop1,
+//       loopSize: '1.64mb',
+//       loopDesc:
+//          'Realized with Fl Studio, Kontakt and Roland PC MK II. Please, send me a link of your work if you use my loop ;)',
+//    },
+//    {
+//       loopName: 'Push to go',
+//       authorName: 'Haru436',
+//       authorAvatar: authorAvatar,
+//       loopKey: 'F#',
+//       loopBpm: 120,
+//       loopGenre: 'hip-hop',
+//       loopCategory: 'sitar',
+//       loopURL: loop1,
+//       loopSize: '1.64mb',
+//       loopDesc:
+//          'Realized with Fl Studio, Kontakt and Roland PC MK II. Please, send me a link of your work if you use my loop ;)',
+//    },
+//    {
+//       loopName: 'Fight',
+//       authorName: 'Haru436',
+//       authorAvatar: authorAvatar,
+//       loopKey: 'F#',
+//       loopBpm: 120,
+//       loopGenre: 'hip-hop',
+//       loopCategory: 'sitar',
+//       loopURL: loop1,
+//       loopSize: '1.64mb',
+//       loopDesc:
+//          'Realized with Fl Studio, Kontakt and Roland PC MK II. Please, send me a link of your work if you use my loop ;)',
+//    },
+//    {
+//       loopName: 'Run',
+//       authorName: 'Haru436',
+//       authorAvatar: authorAvatar,
+//       loopKey: 'F#',
+//       loopBpm: 120,
+//       loopGenre: 'hip-hop',
+//       loopCategory: 'sitar',
+//       loopURL: loop1,
+//       loopSize: '1.64mb',
+//       loopDesc:
+//          'Realized with Fl Studio, Kontakt and Roland PC MK II. Please, send me a link of your work if you use my loop ;)',
+//    },
+// ];
+const mapState = ({ loopsData }) => ({
+   loops: loopsData.loops,
+});
 
 const LoopsPage = () => {
+   const dispatch = useDispatch();
+   const { loops } = useSelector(mapState);
+   useEffect(() => {
+      dispatch(fetchLoops());
+   }, []);
+
    return (
       <div className='dashboard-container page-container'>
          <div className='dashboard-wrapper'>

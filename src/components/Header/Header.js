@@ -5,12 +5,12 @@ import LinkButton from '../LinkButtons/LinkButton';
 import { useSelector } from 'react-redux';
 import { auth } from '../../firebase/firebaseUtils';
 import Button from '../Button/Button';
+import { primaryColor, secondaryColor } from '../../colors/colors';
 
 const Header = () => {
    const { currentUser } = useSelector(({ user }) => ({
       currentUser: user.currentUser,
    }));
-   console.log(currentUser);
    return (
       <>
          <div style={{ height: 82 }}></div>
@@ -24,9 +24,13 @@ const Header = () => {
 
                <div className='header-right'>
                   {!currentUser ? (
-                     <div>
-                        <LinkButton to='sign-in'>Sign in</LinkButton>
-                        <LinkButton to='sign-up'>Sign up</LinkButton>
+                     <div style={{ display: 'flex' }}>
+                        <LinkButton color={secondaryColor} to='sign-up'>
+                           Sign up
+                        </LinkButton>
+                        <LinkButton color={primaryColor} to='sign-in'>
+                           Sign in
+                        </LinkButton>
                      </div>
                   ) : (
                      <div className='loggedIn'>

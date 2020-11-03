@@ -1,93 +1,78 @@
 import React, { useState } from 'react';
 import './styles.scss';
 import { Formik, Form, Field } from 'formik';
-
-const config = {
-   selectLabel: 'Key',
-   selectName: 'keys',
-
-   data: [
-      {
-         value: 'any',
-         label: 'Key',
-      },
-      {
-         value: 'c',
-         label: 'C',
-      },
-   ],
-};
+import * as Yup from 'yup';
 
 const Slider = () => {
    const [isActive, setIsActive] = useState(false);
    const initialValues = {
-      [config.selectName]: config.data[0].label,
+      from: 0,
+      to: 300,
    };
    const active = true;
+   const validationSchema = Yup.object().shape({
+      from: Yup.number(),
+      to: Yup.number(),
+   });
+   const handleSubmit = async ({ from, to }) => {
+      setIsActive(false);
+   };
 
    const handleOpen = () => {
       setIsActive((prev) => !prev);
    };
    return (
       <div className='slider-container'>
-         {/* <h2>{config.selectLabel}</h2> */}
-         <Formik initialValues={initialValues}>
-            {({ values }) => (
-               <Form>
-                  <div className='select-box'>
-                     {active && (
-                        <div
-                           className={
-                              isActive
-                                 ? 'options-container active'
-                                 : 'options-container'
-                           }
-                        >
-                           <div className='inp'>
-                              {/* <label htmlFor='email'>From</label> */}
-
-                              <Field
-                                 autoComplete='off'
-                                 name='from'
-                                 placeholder='min'
-                              />
-                           </div>
-                           <span className='divid'>to</span>
-                           <div className='inp'>
-                              {/* <label htmlFor='email'>To</label> */}
-
-                              <Field
-                                 autoComplete='off'
-                                 name='to'
-                                 placeholder='max'
-                              />
-                           </div>
-                           {/* {config.data.map((option) => (
-                              <div className='option'>
+         <Formik
+            validationSchema={validationSchema}
+            initialValues={initialValues}
+            onSubmit={handleSubmit}
+         >
+            {({ values }) => {
+               return (
+                  <Form>
+                     <div className='select-box'>
+                        {active && (
+                           <div
+                              className={
+                                 isActive
+                                    ? 'options-container active'
+                                    : 'options-container'
+                              }
+                           >
+                              <div className='inp'>
                                  <Field
-                                    className='radio'
-                                    type='radio'
-                                    name={config.selectName}
-                                    id={option.value}
-                                    value={option.label}
+                                    type='number'
+                                    autoComplete='off'
+                                    name='from'
+                                    placeholder='min'
+                                    value={values.from}
                                  />
-                                 <label htmlFor={option.value}>
-                                    {option.label}
-                                 </label>
                               </div>
-                           ))} */}
-                           <div className='save'>
-                              <button>SAVE</button>
-                           </div>
-                        </div>
-                     )}
+                              <span className='divid'>to</span>
+                              <div className='inp'>
+                                 <Field
+                                    type='number'
+                                    autoComplete='off'
+                                    name='to'
+                                    placeholder='max'
+                                    value={values.to}
+                                 />
+                              </div>
 
-                     <div onClick={handleOpen} className='selected'>
-                        BPM
+                              <div className='save'>
+                                 <button type='submit'>SAVE</button>
+                              </div>
+                           </div>
+                        )}
+
+                        <div onClick={handleOpen} className='selected'>
+                           BPM
+                        </div>
                      </div>
-                  </div>
-               </Form>
-            )}
+                  </Form>
+               );
+            }}
          </Formik>
       </div>
    );

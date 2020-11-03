@@ -12,7 +12,7 @@ const ItemsList = ({ loops }) => {
                number={i + 1}
                currentPlaying={currentPlaying}
                setCurrentPlaying={setCurrentPlaying}
-               id={i}
+               id={props.loopID}
                {...props}
             />
          ))}

@@ -5,8 +5,6 @@ import Wave from '../../Waveform/Waveform';
 
 const LoopItem = ({
    loopName,
-   authorName,
-   authorAvatar,
    loopKey,
    loopBpm,
    loopURL,
@@ -18,6 +16,8 @@ const LoopItem = ({
    setCurrentPlaying,
    currentPlaying,
    number,
+   authorName,
+   authorAvatar,
 }) => {
    const [playing, setPlay] = useState(false);
 
@@ -94,7 +94,8 @@ const LoopItem = ({
                      <i className='fas fa-circle divid'></i>
 
                      <span className='loop-key'>
-                        <i className='fas fa-music'></i> {loopKey}
+                        <i className='fas fa-music'></i>{' '}
+                        {handleUpperCase(loopKey)}
                      </span>
                      <i className='fas fa-circle divid'></i>
                      <span className='loop-bpm'>
